@@ -1,0 +1,16 @@
+1. Introduction to KBOM Schema
+The KBOM Schema provides a structured way to capture metadata related to the components, their versions, dependencies, and vulnerabilities in a software application. It’s a key aspect of Security Bill of Materials (SBOM) that helps organizations understand the risks in their software stack by keeping track of vulnerable components and their relationships.
+
+2. Key Fields in the KBOM Schema
+
+Component Name: The name of the software component (e.g., openssl, nginx).
+Version: The specific version of the component (e.g., 1.1.1, 2.3.0).
+CPE (Common Platform Enumeration): A standardized way to reference software components,
+used to identify the software in vulnerability databases (e.g., cpe:/a:openssl:openssl:1.1.1).
+Dependency Relationships: Information about which components depend on other components. 
+This could be direct or transitive dependencies.
+Vulnerability Data: Captures the known vulnerabilities affecting a component, including:
+CVE (Common Vulnerabilities and Exposures) identifiers.
+Severity (e.g., low, medium, high).
+A description of the vulnerability.
+The date of discovery.
