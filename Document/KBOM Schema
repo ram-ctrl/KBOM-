@@ -14,3 +14,12 @@ CVE (Common Vulnerabilities and Exposures) identifiers.
 Severity (e.g., low, medium, high).
 A description of the vulnerability.
 The date of discovery.
+
+3. Why Do We Need KBOM?
+
+The KBOM schema is essential for:
+
+Tracking Dependencies: You can understand how components in your application are related, whether directly or indirectly.
+Identifying Vulnerabilities: Knowing the vulnerabilities related to each component allows for effective risk management and patching.
+Automating Security Management: By including the KBOM in your repository, you can automate checks for vulnerable dependencies.
+Compliance: Many security frameworks and regulations require that you track and report on vulnerabilities in software components.
