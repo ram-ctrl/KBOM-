@@ -1,25 +1,28 @@
-1. Introduction to KBOM Schema
-The KBOM Schema provides a structured way to capture metadata related to the components, their versions, dependencies, and vulnerabilities in a software application. It’s a key aspect of Security Bill of Materials (SBOM) that helps organizations understand the risks in their software stack by keeping track of vulnerable components and their relationships.
+KBOM Schema Integration with a Real Application
 
-2. Key Fields in the KBOM Schema
+We will create a small real-world web application with Dockerized microservices, integrate KBOM (Knowledge Bill of Materials) Schema, and automate the scanning and monitoring process using GitHub Actions CI/CD pipeline.
 
-Component Name: The name of the software component (e.g., openssl, nginx).
-Version: The specific version of the component (e.g., 1.1.1, 2.3.0).
-CPE (Common Platform Enumeration): A standardized way to reference software components,
-used to identify the software in vulnerability databases (e.g., cpe:/a:openssl:openssl:1.1.1).
-Dependency Relationships: Information about which components depend on other components. 
-This could be direct or transitive dependencies.
-Vulnerability Data: Captures the known vulnerabilities affecting a component, including:
-CVE (Common Vulnerabilities and Exposures) identifiers.
-Severity (e.g., low, medium, high).
-A description of the vulnerability.
-The date of discovery.
+Why Do We Need KBOM for an Application?
 
-3. Why Do We Need KBOM?
+1. Security & Vulnerability Management
+KBOM helps track dependencies and their vulnerabilities.
+It provides a CVE (Common Vulnerability Exposure) list of security issues in dependencies.
 
-The KBOM schema is essential for:
+2. Compliance & Auditing
+Helps in compliance tracking for regulations like ISO 27001, NIST, and SOC2.
+Ensures no vulnerable dependencies are in production.
 
-Tracking Dependencies: You can understand how components in your application are related, whether directly or indirectly.
-Identifying Vulnerabilities: Knowing the vulnerabilities related to each component allows for effective risk management and patching.
-Automating Security Management: By including the KBOM in your repository, you can automate checks for vulnerable dependencies.
-Compliance: Many security frameworks and regulations require that you track and report on vulnerabilities in software components.
+3. Dependency Visibility
+Provides visibility into all third-party components used.
+Helps developers track software versions and updates.
+
+4. Industrial Use Cases
+Used in banks, e-commerce, cloud security, and DevSecOps for monitoring open-source dependencies.
+Helps companies reduce supply chain risks.
+
+Application Flow & CI/CD KBOM Integration
+📌 Application Overview
+A Node.js Backend API (Express.js) serving data.
+A React.js Frontend consuming the API.
+A Dockerized microservice structure.
+CI/CD pipeline for KBOM scanning & automatic updates.
