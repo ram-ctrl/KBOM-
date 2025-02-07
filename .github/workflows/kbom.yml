@@ -1,1 +1,40 @@
 
+name: KBOM Update and Security Scan
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  scan-dependencies:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Dependencies
+        run: |
+          cd backend && npm install
+          cd ../frontend && npm install
+
+      - name: Generate KBOM
+        run: |
+          cd backend && trivy fs --format json --output ../kbom.json .
+          cd ../frontend && trivy fs --format json --output ../kbom.json .
+
+      - name: Commit KBOM File
+        uses: EndBug/add-and-commit@v7
+        with:
+          message: "Update KBOM Schema"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
