@@ -1,6 +1,0 @@
-version: 2
-updates:
-  - package-ecosystem: "npm"  # Specify the package manager (npm, yarn, etc.)
-    directory: "/"             # Location of your package.json file
-    schedule:
-      interval: "weekly"       # Dependabot checks for updates weekly
