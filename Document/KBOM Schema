@@ -26,3 +26,22 @@ A Node.js Backend API (Express.js) serving data.
 A React.js Frontend consuming the API.
 A Dockerized microservice structure.
 CI/CD pipeline for KBOM scanning & automatic updates.
+
+/kbom-project/
+├── .github/
+│   ├── workflows/
+│   │   ├── kbom.yml               # GitHub Actions workflow for KBOM update
+│   │   ├── build.yml              # GitHub Actions workflow for CI/CD
+│   └── dependabot.yml              # Dependabot configuration for dependency updates
+├── backend/                        # Backend API (Node.js & Express.js)
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── server.js
+├── frontend/                        # Frontend React App
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── App.js
+├── kbom.json                        # KBOM schema file (JSON format)
+├── scan_dependencies.sh             # Script for manual KBOM scanning
+└── README.md
+
