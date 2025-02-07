@@ -1,0 +1,19 @@
+📁 Project Folder Structure
+
+/kbom-project/
+├── .github/
+│   ├── workflows/
+│   │   ├── kbom.yml               # GitHub Actions workflow for KBOM update
+│   │   ├── build.yml              # GitHub Actions workflow for CI/CD
+│   └── dependabot.yml              # Dependabot configuration for dependency updates
+├── backend/                        # Backend API (Node.js & Express.js)
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── server.js
+├── frontend/                        # Frontend React App
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── App.js
+├── kbom.json                        # KBOM schema file (JSON format)
+├── scan_dependencies.sh             # Script for manual KBOM scanning
+└── README.md
