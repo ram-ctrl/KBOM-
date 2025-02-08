@@ -1,1 +1,40 @@
 
+name: KBOM Security & Prioritization
+
+on:
+  schedule:
+    - cron: "0 3 * * *"  # Runs daily at 3 AM UTC
+  push:
+    branches:
+      - main
+
+jobs:
+  vulnerability_scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Trivy
+        run: sudo apt-get install -y trivy
+
+      - name: Run Trivy Scan
+        run: trivy image --format json -o vulnerability-report.json kbom-app:latest
+
+      - name: Fetch CISA KEV List
+        run: curl -o cisa_kev.json https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
+
+      - name: Extract CISA KEV CVEs
+        run: jq -r '.vulnerabilities[].cveID' cisa_kev.json > cisa_kev_cves.txt
+
+      - name: Fetch EPSS Scores
+        run: curl -o epss_scores.csv https://epss.cyentia.com/epss_scores-current.csv
+
+      - name: Run Prioritization Script
+        run: python prioritize_vulnerabilities.py
+
+      - name: Upload Prioritized Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: prioritized-vulnerabilities
+          path: prioritized_vulnerabilities.json
