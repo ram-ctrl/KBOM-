@@ -212,3 +212,27 @@ image_tag (string):
 The tag of the container image (e.g., "latest", "v1.2.0").
 Example: "latest"
 
+
+
+
+
+Flow Summary
+Generate SBOM with Syft:
+
+Scan the container image using Syft and generate the SBOM in JSON or CycloneDX format.
+Example:
+syft my-app:latest -o json > sbom.json
+Scan Vulnerabilities with Trivy:
+
+Use Trivy to scan the image and export the results in JSON format.
+Example:
+trivy image --format json -o trivy-report.json my-app:latest
+Import SBOM and Vulnerabilities to OWASP Dependency-Track:
+
+Use Dependency-Track’s API to import both the SBOM and vulnerability reports for further analysis and risk management.
+Example for SBOM:
+curl -X POST -H "Authorization: Bearer <api-key>" -F "file=@sbom.json" http://<dependency-track-url>/api/v1/bom
+
+Example for Vulnerability Report:
+curl -X POST -H "Authorization: Bearer <api-key>" -F "file=@trivy-report.json" http://<dependenc
+
