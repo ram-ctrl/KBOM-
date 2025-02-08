@@ -1,4 +1,6 @@
-
+# This GitHub Actions workflow is designed to automate the process of importing SBOM (Software Bill of Materials) 
+# and Vulnerability Reports into OWASP Dependency-Track whenever a commit is pushed to the main branch or 
+# when manually triggered using workflow_dispatc
 name: KBOM Security & Prioritization
 
 on:
