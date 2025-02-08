@@ -45,3 +45,21 @@ CI/CD pipeline for KBOM scanning & automatic updates.
 ├── scan_dependencies.sh             # Script for manual KBOM scanning
 └── README.md
 
+Final Flow: How Everything Works
+
+Developer Pushes Code to GitHub 🚀
+GitHub Actions Triggers KBOM Workflow
+Installs dependencies.
+Scans for vulnerabilities.
+Updates KBOM JSON.
+Commits KBOM file.
+CI/CD Pipeline Runs
+Builds Docker images.
+Deploys backend & frontend.
+Manual Scan (scan_dependencies.sh)
+Can be run anytime to check vulnerabilities.
+
+📌 Conclusion
+KBOM keeps track of security risks by identifying vulnerabilities in dependencies.
+This automates security monitoring using GitHub Actions + Trivy.
+The CI/CD pipeline integrates KBOM security scanning before deployment.
