@@ -1,0 +1,28 @@
+{
+    "HIGH": [
+        {
+            "VulnerabilityID": "CVE-2023-1234",
+            "Severity": "CRITICAL",
+            "Description": "Buffer Overflow in OpenSSL",
+            "Priority": "HIGH"
+        }
+    ],
+    "MEDIUM": [
+        {
+            "VulnerabilityID": "CVE-2023-5678",
+            "Severity": "HIGH",
+            "Description": "Privilege escalation in Linux Kernel",
+            "EPSS_Score": 0.85,
+            "Priority": "MEDIUM"
+        }
+    ],
+    "LOW": [
+        {
+            "VulnerabilityID": "CVE-2023-9999",
+            "Severity": "LOW",
+            "Description": "Denial of Service in Redis",
+            "EPSS_Score": 0.40,
+            "Priority": "LOW"
+        }
+    ]
+}
