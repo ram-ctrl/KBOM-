@@ -1,1 +1,33 @@
 
+name: KBOM Update
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - kbom.json  # This triggers the workflow when the KBOM file is updated
+
+jobs:
+  store-kbom:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up PostgreSQL
+      uses: docker://postgres:13
+      with:
+        ports: 5432:5432
+        options: --env POSTGRES_PASSWORD=yourpassword --env POSTGRES_DB=kbom_db
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y python3-pip
+        pip3 install psycopg2
+
+    - name: Run Python script to store KBOM
+      run: |
+        python3 store_kbom.py
