@@ -1,0 +1,29 @@
+name: Generate SBOM
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate-sbom:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Install Syft
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh
+
+      - name: Generate SBOM
+        run: |
+          syft myregistry/backend:latest -o json > sbom.json
+
+      - name: Commit SBOM File
+        uses: EndBug/add-and-commit@v7
+        with:
+          message: "Updated SBOM file"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
