@@ -34,3 +34,23 @@ sudo apt install trivy                  # Ubuntu/Debian
 Scan Kubernetes Image & Generate Report
 
 trivy image --format json -o vulnerability-report.json myregistry/backend:latest
+
+##To automate the import of SBOM and vulnerability reports into OWASP Dependency-Track using GitHub Actions##
+Go to your GitHub repository.
+Navigate to Settings → Secrets and variables → Actions.
+Click on New repository secret and add:
+DT_API_KEY → Your Dependency-Track API key.
+DT_URL → Your Dependency-Track server URL (e.g., http://your-dependency-track-url:8081).
+
+🔹 Step 2: How It Works
+Triggers on a push to main branch or can be manually triggered.
+Fetches the latest SBOM (sbom.json) and vulnerability report (vulnerability-report.json).
+Uploads both reports to OWASP Dependency-Track via API.
+Dependency-Track analyzes dependencies and vulnerabilities.
+🔹 Step 3: Run the Workflow
+Push changes to main branch → GitHub Actions will run automatically.
+Or manually trigger the workflow under Actions → Import SBOM & Vulnerability Reports to Dependency-Track.
+📌 Expected Output
+Dependency-Track UI will display:
+Software components & dependencies (from SBOM).
+Known vulnerabilities detected (from Trivy scan).
