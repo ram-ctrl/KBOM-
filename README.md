@@ -55,5 +55,22 @@
 ## 9. Automation & Integration
 - How to automate the KBOM generation process in a CI/CD pipeline?  
 - How to schedule regular vulnerability scans using these tools?  
-- How to integrate KBOM with security dashboards for continuous monitoring?  
+- How to integrate KBOM with security dashboards for continuous monitoring?
+
+- # KBOM Security Pipeline 🚀
+
+This repository automates Software Bill of Materials (SBOM) generation, vulnerability scanning, and security tracking for containerized applications.
+
+## 📌 Features
+✅ Generates **SBOM** using Syft  
+✅ Scans vulnerabilities using **Trivy**  
+✅ Uploads reports to **OWASP Dependency-Track**  
+✅ Integrates with **GitHub Actions**  
+
+## 📌 How to Run Locally?
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/your-username/kbom-security-pipeline.git
+   cd kbom-security-pipeline
+
 
