@@ -1,3 +1,12 @@
+Set up a base environment with Node.js 14.
+Set working directory to /app.
+Copy package.json into the container to install dependencies.
+Run npm install to install dependencies from package.json.
+Copy the application files into the container.
+Run the app with npm start when the container starts.
+Expose port 3000 to allow communication with the app running in the container.
+
+
 FROM node:14
 WORKDIR /app
 COPY package.json ./
