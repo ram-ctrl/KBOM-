@@ -1,0 +1,29 @@
+name: Import SBOM & Vulnerability Reports to Dependency-Track
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  import-to-dependency-track:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Upload SBOM to Dependency-Track
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.DT_API_KEY }}" \
+            -F "file=@sbom.json" \
+            ${{ secrets.DT_URL }}/api/v1/bom
+
+      - name: Upload Vulnerability Report to Dependency-Track
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.DT_API_KEY }}" \
+            -F "file=@vulnerability-report.json" \
+            ${{ secrets.DT_URL }}/api/v1/bom
