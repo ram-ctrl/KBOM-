@@ -1,0 +1,84 @@
+Expected Output in OWASP Dependency-Track
+Once the SBOM and vulnerability report are imported into Dependency-Track, you can visualize the results in the Dependency-Track UI.
+
+1️⃣ Home Dashboard
+📍 Navigate to: http://your-dependency-track-url:8081
+
+The dashboard will show an overview of all scanned projects, dependencies, and vulnerabilities.
+🔹 Example Screenshot (Expected UI Output):
+
+markdown
+Copy
+Edit
+--------------------------------------------------------------
+|   PROJECT NAME       | COMPONENTS | VULNERABILITIES | RISK |
+--------------------------------------------------------------
+| My-Three-Tier-App   |     45     |        8        | High |
+| Backend-Service     |     32     |        2        | Medium |
+| Frontend-Service    |     20     |        1        | Low |
+--------------------------------------------------------------
+✅ You will see:
+
+Total dependencies analyzed from the SBOM.
+Total vulnerabilities detected from Trivy.
+Risk level (Critical, High, Medium, Low).
+2️⃣ SBOM View (Project Dependencies)
+📍 Go to: Projects → Select Your Project
+
+Here, you can see all software dependencies identified by Syft SBOM.
+🔹 Example List of Dependencies:
+
+markdown
+Copy
+Edit
+--------------------------------------------------
+| COMPONENT NAME  | VERSION  | CPE ID            |
+--------------------------------------------------
+| nginx          | 1.21.3   | cpe:/a:nginx:nginx:1.21.3 |
+| lodash        | 4.17.21  | cpe:/a:lodash:lodash:4.17.21 |
+| PostgreSQL     | 12.4     | cpe:/a:postgresql:postgresql:12.4 |
+--------------------------------------------------
+✅ You will see:
+
+List of software components.
+Version details of each component.
+CPE ID (Common Platform Enumeration) for security tracking.
+3️⃣ Vulnerability Report (Trivy Scanned Issues)
+📍 Go to: Findings → Vulnerabilities
+
+Shows all vulnerabilities imported from the Trivy scan.
+🔹 Example List of Vulnerabilities:
+
+markdown
+Copy
+Edit
+-------------------------------------------------------------------------------------------------
+| CVE ID         | SEVERITY | COMPONENT  | VERSION | DESCRIPTION                                |
+-------------------------------------------------------------------------------------------------
+| CVE-2022-1234  | HIGH     | lodash     | 4.17.21 | Prototype pollution vulnerability         |
+| CVE-2021-3456  | CRITICAL | PostgreSQL | 12.4    | Remote code execution vulnerability       |
+| CVE-2020-9999  | MEDIUM   | nginx      | 1.21.3  | Buffer overflow issue                     |
+-------------------------------------------------------------------------------------------------
+✅ You will see:
+
+CVE ID (Common Vulnerability Enumeration).
+Severity level (Critical, High, Medium, Low).
+Affected component and version.
+Description of the vulnerability.
+4️⃣ Final Summary & Risk Insights
+📍 Go to: Projects → Risk Profile
+
+View a risk graph showing high-risk dependencies.
+🔹 Example Risk Insights Graph: 📊 High: 3 | Medium: 5 | Low: 10 | Critical: 1
+⚠ Action Needed: Upgrade PostgreSQL from 12.4 → 13.0 to fix CVE-2021-3456.
+
+📌 Summary of Expected Output
+1️⃣ SBOM Overview 📄 (List of all dependencies).
+2️⃣ Vulnerability List 🔍 (Trivy scanned issues).
+3️⃣ Risk Score 🚨 (Graph showing security status).
+4️⃣ Actionable Insights ⚡ (Fix suggestions for high-risk dependencies).
+
+✅ Why This Matters?
+Automates dependency and vulnerability tracking in CI/CD pipelines.
+Helps security teams proactively mitigate risks.
+Ensures compliance with security standards (e.g., ISO 27001, NIST).
