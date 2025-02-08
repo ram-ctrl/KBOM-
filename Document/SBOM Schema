@@ -1,1 +1,25 @@
+## Generate SBOM using Syft ##
+Syft generates an SBOM (Software Bill of Materials) for the application.
 
+Install Syft
+
+curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh
+
+Generate SBOM in JSON Format
+
+syft myregistry/backend:latest -o json > sbom.json
+
+Generate SBOM in CycloneDX Format
+
+syft myregistry/backend:latest -o cyclonedx-json > sbom-cyclonedx.json
+
+🔹 Step 4: Scan for Vulnerabilities Using Trivy
+Trivy scans the image for security issues.
+
+Install Trivy
+
+brew install aquasecurity/trivy/trivy   # macOS
+sudo apt install trivy                  # Ubuntu/Debian
+Scan Kubernetes Image & Generate Report
+
+trivy image --format json -o vulnerability-report.json myregistry/backend:latest
