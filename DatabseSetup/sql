@@ -1,0 +1,40 @@
+-- Create the database
+CREATE DATABASE kbom_db;
+
+-- Switch to the created database
+\c kbom_db;
+
+-- Create a table for the image information
+CREATE TABLE images (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  digest VARCHAR(255),
+  tag VARCHAR(255)
+);
+
+-- Create a table for components
+CREATE TABLE components (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  version VARCHAR(255),
+  license VARCHAR(255)
+);
+
+-- Create a table for CVEs associated with components
+CREATE TABLE cves (
+  id SERIAL PRIMARY KEY,
+  cve_id VARCHAR(255) NOT NULL,
+  severity VARCHAR(50),
+  description TEXT,
+  recommended_fix TEXT,
+  component_id INTEGER REFERENCES components(id)
+);
+
+-- Create a table for vulnerabilities
+CREATE TABLE vulnerabilities (
+  id SERIAL PRIMARY KEY,
+  cve_id VARCHAR(255) NOT NULL,
+  severity VARCHAR(50),
+  component VARCHAR(255),
+  fix TEXT
+);
