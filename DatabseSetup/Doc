@@ -1,0 +1,6 @@
+Database Connection: Connects to the PostgreSQL database using psycopg2 library.
+JSON Parsing: Loads the KBOM JSON data.
+Inserting Data:
+Inserts image data into the images table.
+Inserts component data and their CVEs into the components and cves tables, respectively.
+Inserts vulnerabilities into the vulnerabilities table.
