@@ -1,0 +1,21 @@
+name: Security Scan
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  scan-image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Install Trivy
+        run: sudo apt install -y trivy
+
+      - name: Scan Image
+        run: |
+          trivy image --format json -o vulnerability-report.json myregistry/backend:latest
