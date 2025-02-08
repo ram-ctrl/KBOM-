@@ -23,3 +23,14 @@ sudo apt install trivy                  # Ubuntu/Debian
 Scan Kubernetes Image & Generate Report
 
 trivy image --format json -o vulnerability-report.json myregistry/backend:latest
+
+Scan for Vulnerabilities Using Trivy
+Trivy scans the image for security issues.
+
+Install Trivy
+
+brew install aquasecurity/trivy/trivy   # macOS
+sudo apt install trivy                  # Ubuntu/Debian
+Scan Kubernetes Image & Generate Report
+
+trivy image --format json -o vulnerability-report.json myregistry/backend:latest
