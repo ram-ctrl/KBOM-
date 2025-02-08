@@ -1,0 +1,49 @@
+{
+  "image": {
+    "name": "my-app:latest",
+    "digest": "sha256:d8f7c3b881db42b9c1df7c634ecb2d34f2b3aeb87cc4a19fa00d62f0bd52f73d",
+    "tag": "latest"
+  },
+  "components": [
+    {
+      "name": "flask",
+      "version": "2.0.3",
+      "license": "BSD-3-Clause",
+      "cve": [
+        {
+          "id": "CVE-2021-12345",
+          "severity": "high",
+          "description": "Remote code execution vulnerability in flask",
+          "recommended_fix": "Upgrade flask to 2.0.4"
+        }
+      ]
+    },
+    {
+      "name": "nginx",
+      "version": "1.19",
+      "license": "GPL-2.0",
+      "cve": [
+        {
+          "id": "CVE-2021-6789",
+          "severity": "critical",
+          "description": "Memory leak vulnerability in nginx",
+          "recommended_fix": "Upgrade nginx to 1.19.1"
+        }
+      ]
+    }
+  ],
+  "vulnerabilities": [
+    {
+      "cve_id": "CVE-2021-12345",
+      "severity": "high",
+      "component": "flask",
+      "fix": "Upgrade flask to version 2.0.4"
+    },
+    {
+      "cve_id": "CVE-2021-6789",
+      "severity": "critical",
+      "component": "nginx",
+      "fix": "Upgrade nginx to version 1.19.1"
+    }
+  ]
+}
